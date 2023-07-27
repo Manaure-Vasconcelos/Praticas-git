@@ -44,6 +44,7 @@ const elementos = [
     { tag: 'div', text: 'Texto div'},
     { tag: 'footer', text: 'Texto footer'}
 ]
+
 for (let i = 0; i < elementos.length; i++) {
     const { tag, text}  = elementos[i];
     const elemento = document.createElement(tag);
