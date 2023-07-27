@@ -31,3 +31,24 @@ const { sobrenome, idade: novaIdade } = pessoa // pode desestruturar mais de uma
 const { endereço: { rua, numero } } = pessoa; // Acessando os valores dentro do endereço, que é outro objeto.
 console.log(nome, sobrenome, novaIdade, rua, numero)
 console.log(resto) // usando operador rest
+
+// Script exercicio
+// Foi criado elementos passados por uma lista de objetos e usado a desestruturação para a criação das tags.
+
+const container = document.querySelector('.container');
+const div = document.createElement('div');
+
+const elementos = [
+    { tag: 'p', text: 'Texto P'},
+    { tag: 'article', text: 'Texto article'},
+    { tag: 'div', text: 'Texto div'},
+    { tag: 'footer', text: 'Texto footer'}
+]
+
+for (let i = 0; i < elementos.length; i++) {
+    const { tag, text}  = elementos[i];
+    const elemento = document.createElement(tag);
+    elemento.innerText = text;
+    div.appendChild(elemento);
+    container.appendChild(div);
+}
