@@ -1,34 +1,44 @@
 const timerDisplay = document.querySelector('.timer');
-const btnStart = document.querySelector('.start');
-const btnPause = document.querySelector('.pause');
-const btnReset = document.querySelector('.reset');
+let second = 0;
+let timer;
 
+/*Criando o cronometro de acordo com os milisegundos. Foi feita uma variavel em segundos e entao passada para a função, dentro dela foi multiplicado por 1000 para dar o valor de milisegundos. Foi feito isso pq a função Date funciona por milisegundo. Ao final a função retorna o valor formatado em pt-BR, com timeZone e formato 12 horas.*/
 const getHoursOfSeconds = (second) => {
     const data = new Date(second * 1000)
     return data.toLocaleTimeString('pt-BR', {
         hour12: false,
-        timeZone: 'GMT'
+        timeZone: 'UTC'
     })
 };
 
-const timer = btnStart.addEventListener('click', (event) => {
-    setInterval(() => {
-        timerDisplay.innerHTML = getHoursOfSeconds(1)
+const startTimer = () => {
+    timer = setInterval(() => {
+        second++;
+        timerDisplay.innerHTML = getHoursOfSeconds(second);
         timerDisplay.style.color = 'green';
     }, 1000);
+};
+
+/*Aqui captura todos os eventos do documento e coloca em uma variavel, dentro disso coloca-se uma condição, se o click for em determinadas classes...aconteça algo. Tem que escrever a classe que foi colocada no elemento. 
+Com isso não precisa selecionar cada botão, const btn = queryselector... Pq aqui ja captura todos os eventos do documento*/
+document.addEventListener('click', (e) => {
+    const el = e.target;
+
+    if (el.classList.contains('start')){
+        clearInterval(timer)
+        startTimer(); 
+    }
+    if (el.classList.contains('pause')){
+        clearInterval(timer)
+        timerDisplay.style.color = 'red'
+    }
+    if (el.classList.contains('reset')){ 
+        clearInterval(timer)
+        second = 0;
+        timerDisplay.innerHTML = '00:00:00'
+        timerDisplay.style.color = 'black';
+    }
 });
-
-btnPause.addEventListener('click', () => {
-    timerDisplay.innerHTML = 'Cliquei no pause';
-    timerDisplay.style.color = 'red';
-})
-
-btnReset.addEventListener('click', (timer) => {
-    clearInterval(timer)
-    timerDisplay.style.color = 'black';
-})
-
-
 
 
 
