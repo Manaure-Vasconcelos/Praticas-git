@@ -68,9 +68,8 @@ const salveTask = () => {
 const getTaksSaved = () => {
     const tasks = localStorage.getItem('tasklist');
     const taskList = JSON.parse(tasks);
-    
-    for (let task of taskList){
+
+    for (let task of taskList) {
         getNewTask(task);
     }
 }
-
