@@ -2,11 +2,10 @@
 const addElement = (el) => {
     const display = document.querySelector('.display');
     const text = display.value
-    let lastElement = el
-    console.log(lastElement);
-    if (text.endsWith() === lastElement || text.endsWith() === lastElement || text.endsWith() === lastElement || text.endsWith() === lastElement) {
-        display.value = text.slice(0, -1)
-    }
+    if (text.endsWith('+')) removeElement();
+    if (text.endsWith('-')) removeElement();
+    if (text.endsWith('*')) removeElement();
+    if (text.endsWith('/')) removeElement();
     display.value += el
 }
 
@@ -24,6 +23,10 @@ const cleanDisplay = () => {
 "use strict"
 const equal = () => {
     const display = document.querySelector('.display');
-    display.value = eval(display.value)
+    try {
+        display.value = eval(display.value)
+    } catch {
+        display.value = 'Error'
+    }
 }
 
