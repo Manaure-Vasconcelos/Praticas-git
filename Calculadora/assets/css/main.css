@@ -1,68 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 :root {
-    --primary-color: aquamarine;
-    --primary-color-darker: rgb(79, 204, 142);
-    --primary-color-correto: rgb(119, 252, 208);
-    --primary-color-incorreto: rgb(236, 113, 113);
+  --primary-color: aquamarine;
+  --primary-color-darker: rgb(79, 204, 142);
+  --primary-color-correto: rgb(119, 252, 208);
+  --primary-color-incorreto: rgb(236, 113, 113);
 }
 
 * {
-    box-sizing: border-box;
-    outline: none;
+  box-sizing: border-box;
+  outline: none;
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
-    background: var(--primary-color);
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.3em;
-    line-height: 1.3em;
-    text-align: justify;
+  margin: 0px;
+  padding: 0px;
+  background: var(--primary-color);
+  font-family: "Open sans", sans-serif;
+  font-size: 1.3em;
+  line-height: 1.3em;
+  text-align: justify;
 }
 
 .container {
-    max-width: 640px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
+  max-width: 300px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
- 
+
 .calculator {
-    width: 260px;
-    display: grid
+  width: 260px;
+  display: grid;
+  margin: auto;
 }
 
 .display {
-    border: 1px solid;
-    text-align: right;
-    padding: 5px;
-    margin: 0;
-    border-radius: 5px;
+  border: 1px solid;
+  text-align: right;
+  padding: 5px;
+  margin: 0;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 20px;
 }
 
 .buttons {
-    display: grid;
-    justify-content: space-around;
-    margin: 0px;
-
+  display: grid;
+  justify-content: space-around;
+  margin: 5px 0px;
 }
 
 button {
-    width: 60px;
-    height: 30px;
-    margin: 0px;
-    padding: 5px;
-    background-color: var(--primary-color);
-    font-weight: 700;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5ms ease-in-out;
+  width: 60px;
+  height: 30px;
+  margin: 0px;
+  padding: 5px;
+  background-color: var(--primary-color);
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5ms ease-in-out;
 }
 
 button:hover {
-    background-color: var(--primary-color-darker);
+  background-color: var(--primary-color-darker);
 }
