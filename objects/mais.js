@@ -1,7 +1,7 @@
 /*
 Metodos uteis
 
-object.entries
+object.entries - itera sobre um obj e devolve um array com os valores
 object.assign(des, any)
 ...(spread) 
 
