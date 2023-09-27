@@ -5,31 +5,26 @@ class Pessoa {
     }
 }
 
+// criando um prototype para melhorar a performance do obj.
 Pessoa.prototype.nomeCompleto = function () {
     return `${this.nome} ${this.sobrenome}`;
 }
 
 const p1 = new Pessoa('Manaure', 'Vasconcelos')
 
-console.dir(p1.nomeCompleto())
+console.log(p1.nomeCompleto())
 
+const p2 = new Pessoa('Millene', 'Soares')
 
-class pessoa2 {
-    constructor(nome, sobrenome) {
-        return {
-            nome,
-            sobrenome
-        };
-    }
-    nomeCompleto() {
-        return `${this.nome} ${this.sobrenome}`;
-    }
-}
+Object.setPrototypeOf(p2, p1) // Ligando os dois obj por herança.
 
+console.log(p2.nomeCompleto())
 
-const p2 = new pessoa2('millene', 'soares')
+const p3 = Object.create(Pessoa.prototype) // Criando obj e atribindo a herança diretamente.
+p3.nome = 'Gilda';
+p3.sobrenome = 'Sousa'
 
-console.log(p2.nomeCompleto)
+console.log(p3.nomeCompleto())
 
 /* Anotações:
     - prototypes só funcionam com constructor functions.
