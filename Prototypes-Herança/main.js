@@ -69,9 +69,11 @@ const caneca = new Caneca('caneca', 5, 'Porcelana');
 produto.aumento(10)
 camiseta.aumento(50)
 caneca.aumento(20)
+
 console.log(produto)
 console.log(camiseta)
 console.log(caneca)
+
 /*
     - A modo usado acima é especificamente para classes.
     - Não funciona com funcion constructor.
@@ -80,7 +82,8 @@ console.log(caneca)
     - super = fazer o chamado para a classe pai.
 */
 
-/* function Produto2(nome, preco) {
+/*
+function Produto2(nome, preco) {
     this.nome = nome;
     this.preco = preco;
 }
