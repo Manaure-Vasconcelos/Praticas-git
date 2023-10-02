@@ -1,0 +1,51 @@
+/* 
+705.484.450-52 
+075.329.103-77
+
+7x  0x  5x  4x  8x  4x  4x  5x  0x  numero do cpf s/ digitos
+10  9   8   7   6   5   4   3   2   multiplica 
+70  0   40  28  48  20  16  15  0   resultado da multiplicação -> soma tudo e faz o calculo abaixo.
+
+11 - (237 % 11) = 5 (primeiro digito)
+se o resultado for maior que 9, consideramos 0;
+
+7x  0x  5x  4x  8x  4x  4x  5x  0x  5x  numero do cpf /s digitos + o resultado acima.
+11  10  9   8   7   6   5   4   3   2   multiplica   
+77  0   45  32  56  24  20  20  0   10  resultado da multiplicação -> soma tudo e faz o calculo abaixo.
+
+11 - (284 % 11) = 2 (segundo digito)
+se o resultado for maior que 9, consideramos 0;
+
+depois dos dois calculos e obtiver os dois digitos, concatenamos ao cpf e comparamos os dois.
+705.484.450-52 === 705.484.450-52  se der iguais o cpf é valido.
+*/
+
+const verificaCpf = (cpf) => {
+    const cpfLimpo = somenteNumeros(cpf)
+    const cpfVerificado = gerarCpfVerificado(cpfLimpo) 
+    
+    cpfLimpo === cpfVerificado ? console.log('cpf valido') : console.log('cpf invalido')
+}
+
+const somenteNumeros = (cpf) => cpf.replace(/\D+/g, '');
+
+const gerarCpfVerificado = (cpf) => {
+    let cpfTemp = cpf.slice(0, -2)
+    cpfTemp += calculoCpf(cpfTemp)
+    cpfTemp += calculoCpf(cpfTemp)
+    return cpfTemp
+}
+
+const calculoCpf = (cpf) => {
+    let multiplicador = cpf.length + 1;
+    let temp = 0;
+    for (number of cpf) {
+        temp += number * multiplicador;
+        multiplicador--
+    }
+    const primeiroDigito = 11 - (temp % 11);
+    if (primeiroDigito >= 10) return '0';
+    return primeiroDigito
+}
+
+verificaCpf('705.484.451-52')
