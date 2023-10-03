@@ -20,6 +20,7 @@ depois dos dois calculos e obtiver os dois digitos, concatenamos ao cpf e compar
 705.484.450-52 === 705.484.450-52  se der iguais o cpf é valido.
 */
 
+// Resolução pessoal
 const verificaCpf = (cpf) => {
     const cpfLimpo = somenteNumeros(cpf)
     const cpfVerificado = gerarCpfVerificado(cpfLimpo) 
@@ -44,8 +45,54 @@ const calculoCpf = (cpf) => {
         multiplicador--
     }
     const primeiroDigito = 11 - (temp % 11);
-    if (primeiroDigito >= 10) return '0';
+    if (primeiroDigito > 9) return '0';
     return primeiroDigito
 }
 
-verificaCpf('705.484.451-52')
+verificaCpf('705.484.450-52')
+
+
+// Resolução usando classes e prototypes.
+class ValidaCpf {
+    constructor(cpfEnviado) {
+        Object.defineProperty(this, 'cpfLimpo', {
+            enumerable: true,
+            get: function () {
+                return cpfEnviado.replace(/\D+/g, '');
+            }
+        })
+    }
+}
+
+ValidaCpf.prototype.verifica = function () {
+    if (typeof this.cpfLimpo === 'undefined') return false;
+    if (this.cpfLimpo.length !== 11) return false;
+    if (this.isSequencia()) return false;
+
+    let cpfTemp = this.cpfLimpo.slice(0, -2)
+    cpfTemp += cpf.calculo(cpfTemp)
+    cpfTemp += cpf.calculo(cpfTemp)
+
+    return this.cpfLimpo === cpfTemp ? ('Cpf Valido') : 'Cpf Invalido';
+
+}
+
+ValidaCpf.prototype.calculo = function (cpf) {
+    let multiplicador = cpf.length + 1;
+    let temp = 0;
+    for (number of cpf) {
+        temp += number * multiplicador;
+        multiplicador--
+    }
+    const digito = 11 - (temp % 11);
+    return digito > 9 ? '0' : String(digito);
+}
+
+ValidaCpf.prototype.isSequencia = function() {
+    const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length);
+    return sequencia === this.cpfLimpo;
+};
+
+const cpf = new ValidaCpf('075.329.103-77')
+
+console.log(cpf.verifica())
