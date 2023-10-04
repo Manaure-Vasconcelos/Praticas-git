@@ -6,7 +6,9 @@ class Pessoa {
     }
 }
 
-// criando um prototype para melhorar a performance do obj.
+/*  - criando um prototype para melhorar a performance do obj -> Essa afirmação só é valida para constructor function
+    - Em class pode acoplar diretamente na class que vai agir como um prototype.
+*/
 Pessoa.prototype.nomeCompleto = function () {
     return `${this.nome} ${this.sobrenome}`;
 }
@@ -52,6 +54,10 @@ Camiseta.prototype.aumento = function (percentual) {
     this.preco = this.preco + (this.preco * (percentual / 100))
 }
 
+/*  - Essa sintaxe é antiga e é atrelada a constructor function.
+    - Para class não precisa disso, o metodo Extends ja faz a ligação.
+*/
+
 Camiseta.prototype = Object.create(Produto.prototype);
 Camiseta.prototype.constructor = Camiseta;
 
@@ -61,8 +67,6 @@ class Caneca extends Produto {
         this.material = material;
     }
 }
-Caneca.prototype = Object.create(Produto.prototype);
-Caneca.prototype.constructor = Caneca;
 
 const produto = new Produto('generico', 10);
 const camiseta = new Camiseta('regata', 100, 'azul');
