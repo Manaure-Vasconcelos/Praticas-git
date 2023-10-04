@@ -1,3 +1,4 @@
+// Heranças com constructor function ou classes.
 class Pessoa {
     constructor(nome, sobrenome) {
         this.nome = nome;
@@ -107,4 +108,58 @@ console.log(produto2)
 console.log(camiseta2)
 /* 
     - As function constructor podem ser substituidas por classes, é mais atual.
+*/
+
+// Heranças com fatory functions
+console.log('')
+
+/* const pessoaPrototype = {
+    falar() {
+        console.log(`${this.nome} está falando`)
+    },
+    comer() {
+        console.log(`${this.nome} está comendo`)
+    },
+    falarIdade() {
+        console.log(`Tenho ${this.idade} anos.`)
+    }
+} */
+
+const falar = {
+    falar() {
+        console.log(`${this.nome} está falando`)
+    }
+}
+
+const comer = {
+    comer() {
+        console.log(`${this.nome} está comendo`)
+    }
+}
+
+const falarIdade = {
+    falarIdade() {
+        console.log(`Tenho ${this.idade} anos`)
+    }
+}
+
+const pessoaPrototype = Object.assign({}, falar, comer, falarIdade);
+
+function pessoa(nome, sobrenome, idade) {
+    return Object.create(pessoaPrototype, {
+        nome: { value: nome },
+        sobrenome: { value: sobrenome },
+        idade: { value: idade }
+    });
+}
+
+const pessoa1 = pessoa('gustavo', 'silva', 20)
+
+pessoa1.falar()
+pessoa1.comer()
+pessoa1.falarIdade()
+
+/* 
+    - Achei mais complicada e extensa de codar.
+    - Pode usar de maneira desacoplada e depois fazer um mixin de objto que contem o metodo
 */
