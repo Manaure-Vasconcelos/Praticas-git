@@ -62,36 +62,36 @@ class ValidaCpf {
             }
         })
     }
-}
 
-ValidaCpf.prototype.verifica = function () {
-    if (typeof this.cpfLimpo === 'undefined') return false;
-    if (this.cpfLimpo.length !== 11) return false;
-    if (this.isSequencia()) return false;
-
-    let cpfTemp = this.cpfLimpo.slice(0, -2)
-    cpfTemp += cpf.calculo(cpfTemp)
-    cpfTemp += cpf.calculo(cpfTemp)
-
-    return this.cpfLimpo === cpfTemp ? ('Cpf Valido') : 'Cpf Invalido';
-
-}
-
-ValidaCpf.prototype.calculo = function (cpf) {
-    let multiplicador = cpf.length + 1;
-    let temp = 0;
-    for (number of cpf) {
-        temp += number * multiplicador;
-        multiplicador--
+    verifica() {
+        if (typeof this.cpfLimpo === 'undefined') return false;
+        if (this.cpfLimpo.length !== 11) return false;
+        if (this.isSequencia()) return false;
+    
+        let cpfTemp = this.cpfLimpo.slice(0, -2)
+        cpfTemp += ValidaCpf.calculo(cpfTemp)
+        cpfTemp += ValidaCpf.calculo(cpfTemp)
+    
+        return this.cpfLimpo === cpfTemp ? ('Cpf Valido') : 'Cpf Invalido';
+    
     }
-    const digito = 11 - (temp % 11);
-    return digito > 9 ? '0' : String(digito);
-}
 
-ValidaCpf.prototype.isSequencia = function() {
-    const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length);
-    return sequencia === this.cpfLimpo;
-};
+    static calculo(cpf) { // Indicado usar static quando tem um metodo que não utiliza os valores do objeto.
+        let multiplicador = cpf.length + 1;
+        let temp = 0;
+        for (number of cpf) {
+            temp += number * multiplicador;
+            multiplicador--
+        }
+        const digito = 11 - (temp % 11);
+        return digito > 9 ? '0' : String(digito);
+    }
+
+    isSequencia() {
+        const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length);
+        return sequencia === this.cpfLimpo;
+    }
+}
 
 const cpf = new ValidaCpf('075.329.103-77')
 
