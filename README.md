@@ -1,7 +1,7 @@
 # Repositório de estudo.
 ##
 
-Esse é um repositório dedicado ao estudo backend. <br>
+Esse é um repositório dedicado ao estudo das tegnologias em geral, com foco em backend. <br>
 Sempre escrevo e documento os assuntos mais pertinentes que estou estudando no momento. <br>
 Atualmente estou focado no JavaScript mas ja estou praticando tbm em outras linguagens.
 <div style="display: flex" >
