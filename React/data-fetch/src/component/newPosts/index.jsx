@@ -9,8 +9,8 @@ export const PostCard = ({ title, cover, body }) => (
 <div className="post">
     <img src={cover} alt={title} />
     <div className="postCards">
-    <h1>{title}</h1>
-    <p>{body}</p>
+        <h1>{title}</h1>
+        <p>{body}</p>
     </div>
 </div>
 );
