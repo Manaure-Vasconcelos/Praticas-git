@@ -1,4 +1,4 @@
-export const handleScroll = (page, postsPerPage, allPosts) => {
+const handleScroll = (page, postsPerPage, allPosts) => {
     const { innerHeight } = window;
     const { scrollTop, offsetHeight } = document.documentElement;
 
@@ -10,3 +10,5 @@ export const handleScroll = (page, postsPerPage, allPosts) => {
     }
     return []
 };
+
+export default handleScroll

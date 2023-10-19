@@ -1,6 +1,8 @@
 import { PostCard } from '../newPosts';
+import PropTypes from 'prop-types'
+import './style.css'
 
-export const Posts = ({ posts }) => (
+const Posts = ({ posts }) => (
 <div className="posts">
     {posts.map((post) => (
       // Uso de props e components
@@ -11,4 +13,12 @@ export const Posts = ({ posts }) => (
         body={post.body} />
     ))}
 </div>
+
+
 );
+
+Posts.propTypes = {
+  posts: PropTypes.array
+}
+
+export default Posts

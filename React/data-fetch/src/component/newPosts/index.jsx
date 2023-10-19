@@ -5,6 +5,8 @@
     É mais viável em projetos maiores.
     retorna um jsx, usando arrow function pode simplificar o código.
 */
+import './style.css'
+
 export const PostCard = ({ title, cover, body }) => (
 <div className="post">
     <img src={cover} alt={title} />
